@@ -1,0 +1,65 @@
+%YAML:1.0
+
+Ctrl_loop: 0.02 #s
+# path: "test"
+CtrlEgoParams.l_steer_max: 520
+CtrlEgoParams.r_steer_max: 500
+
+#实车
+#CtrlEgoParams.steer_ratio: 10.75 #15.4 #25  #13.2
+#CtrlEgoParams.wheel_base: 2.92 #2.92 #2.7 #2.66
+
+# HIL仿真
+CtrlEgoParams.steer_ratio: 15.4 #25  #13.2
+CtrlEgoParams.wheel_base: 2.92 #2.7 #2.66
+
+AccParams.ts: 0.01
+AccParams.d_offset: 8 #5
+AccParams.state_size: 2
+AccParams.tolerance: 0.01
+AccParams.num_iteration: 100
+AccParams.overtake_assist_th_discout: 0.8
+AccParams.driveoff_last_time: 10    #s
+AccParams.driveoff_rel_dis: 5.3     #driveoff function is enabled when distance between itself and object gets at this parameter.(m)
+AccParams.driveoff_rel_vel: 0.5     #driveoff function is enabled  when relative velocity between itself and object gets at this parameter.(m/s)
+AccParams.driveoff_enable_vel: 1.1   #driveoff function is enabled when current velocity of itself gets at this parameter.(km/h)
+AccParams.driveoff_disable_vel: 9.0     #driveoff function is disabled when current velocity of itself gets at this parameter.(km/h)
+AccParams.driveoff_standby_enable_vel: 1.5    #driveoff function is enabled when current velocity of itself gets at this parameter transferring from standby to acc.(m/s)
+
+#eps angle2torque
+PID.Kp: 0.05
+PID.Ki: 0.0
+PID.Kd: 0.0
+PID.pidout_min: -0.2 #max:10nm/s
+PID.pidout_max: 0.2
+
+eps_pid.kp: 0.05 #0.1
+eps_pid.ki: 0.0 #0.02
+eps_pid.kd: 0.0
+eps_pid.ki_max: 2.0
+
+eps_pid.K_beta: 0.0
+eps_pid.K_alpha: 0.0
+eps_pid.Vmax: 120 # km/h
+eps_pid.init_torque: 0.0
+#eps limit
+eps_limit.step_max: 0.2 #max:0.2N
+eps_limit.torque_rate_max: 5 #max:10Nm/s
+eps_limit.outmax: 3 
+eps_limit.outmin: -3 
+eps_limit.steer_step_max: 5.0
+
+#lon ctrl params
+
+acc.kp: 0.5
+acc.ki: 0.02
+acc.kd: 0.0
+acc.iterm_max: 1.0
+acc.iterm_min: -1.0
+#Lqr lon ctrl params
+
+LQR.q1: 1.0
+LQR.q2: 0.0
+LQR.q3: 0.0
+LQR.q4: 4.0
+LQR.r1: 9.0

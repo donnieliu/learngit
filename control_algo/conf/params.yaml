@@ -1,0 +1,60 @@
+%YAML:1.0
+
+NodeSet:
+  ctrl_loop: 0.02 #s
+
+VehicleParams:
+  l_steer_max: 520 # steer left max angle (deeg)
+  r_steer_max: 500 # steer right max angle (deeg)
+  steer_ratio: 10.75 # steering gear ratio
+  wheel_base: 2.92 # wheel base
+
+StateMachineParams:
+  overtake_assist_th_discout: 0.8
+  driveoff_last_time: 10    #s
+  driveoff_rel_dis: 5.3     #driveoff function is enabled when distance between itself and object gets at this parameter.(m)
+  driveoff_rel_vel: 0.5     #driveoff function is enabled  when relative velocity between itself and object gets at this parameter.(m/s)
+  driveoff_enable_vel: 1.1   #driveoff function is enabled when current velocity of itself gets at this parameter.(km/h)
+  driveoff_disable_vel: 9.0     #driveoff function is disabled when current velocity of itself gets at this parameter.(km/h)
+  driveoff_standby_enable_vel: 1.5    #driveoff function is enabled when current velocity of itself gets at this parameter transferring from standby to acc.(m/s)
+
+EpsPIDCtrl:
+  K_beta: 0.000005
+  K_alpha: 0.1
+  v_max: 120 # km/h
+  init_torque: 0.0
+
+  kp: 0.1 #0.1
+  ki: 0.01 #0.02
+  kd: 0.0
+  ki_max: 2.0
+
+EpsParams:
+  step_max: 0.2 #max:0.2N
+  torque_rate_max: 5 #max:10Nm/s
+  outmax: 3 
+  outmin: -3 
+  steer_step_max: 5.0
+
+ACCParams:
+  d_offset: 8 #5
+
+SpeedPIDCtrl:
+  kp: 0.5
+  ki: 0.0
+  kd: 0.0
+  iterm_max: 1.0
+  iterm_min: -1.0
+
+DisLQRCtrl:
+  q1: 1.0
+  q2: 0.0
+  q3: 0.0
+  q4: 4.0
+  r1: 9.0
+
+LQRsolvor:
+  ts: 0.01
+  state_size: 2
+  tolerance: 0.01
+  num_iteration: 100
